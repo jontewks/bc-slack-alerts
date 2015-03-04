@@ -43,10 +43,11 @@ app.post('/', function(req, res) {
   }
 
   request({
-    url: process.env.WEBSITE,
+    url: process.env.URL,
     method: 'POST',
     body: JSON.stringify(payload)
   }, function() {
+    console.log('in here')
     res.sendStatus(201);
   });
 });
