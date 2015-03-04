@@ -47,7 +47,6 @@ app.post('/', function(req, res) {
     method: 'POST',
     body: JSON.stringify(payload)
   }, function() {
-    console.log('in here')
     res.sendStatus(201);
   });
 });
