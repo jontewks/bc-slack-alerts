@@ -10,10 +10,10 @@ app.get('/', function(req, res) {
 
 app.post('/', function(req, res) {
   var payload = {
-    channel: "#hackers",
-    username: "Doom Guy",
-    text: "Test Post",
-    icon_emoji: ":godmode:"
+    channel: '#hackers',
+    username: 'Doom Guy',
+    text: 'Alert from Loggly: something something something',
+    icon_emoji: ':godmode:'
   };
   
   var type = req.query.type;
@@ -40,11 +40,8 @@ app.post('/', function(req, res) {
     case 'slowrequests':
       payload.text = 'Alert from Loggly: Slow Requests';
       break;
-    default:
-      break;
   }
-  console.log('website', process.env.WEBSITE)
-  console.log('payload', payload)
+
   request({
     url: process.env.WEBSITE,
     method: 'POST',
