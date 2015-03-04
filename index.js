@@ -8,12 +8,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-  console.log(req.body);
+  console.log(req);
 });
 
-var server = app.listen(app.get('port'), function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Listening at http://%s:%s', host, port);
-});
+var server = app.listen(app.get('port'));
