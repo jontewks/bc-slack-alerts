@@ -43,7 +43,8 @@ app.post('/', function(req, res) {
     default:
       break;
   }
-
+  console.log('website', process.env.WEBSITE)
+  console.log('payload', payload)
   request({
     url: process.env.WEBSITE,
     method: 'POST',
