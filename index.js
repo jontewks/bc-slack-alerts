@@ -20,25 +20,25 @@ app.post('/', function(req, res) {
 
   switch(type) {
     case 'boxerror':
-      payload.text = '@channel Alert from Loggly: Box Error';
+      payload.text = '<!channel> Alert from Loggly: Box Error';
       break;
     case 'elevatedclientalerts':
-      payload.text = '@channel Alert from Loggly: Elevated Client Alerts';
+      payload.text = '<!channel> Alert from Loggly: Elevated Client Alerts';
       break;
     case 'elevatedserveralerts':
-      payload.text = '@channel Alert from Loggly: Elevated Server Alerts';
+      payload.text = '<!channel> Alert from Loggly: Elevated Server Alerts';
       break;
     case 'jobfailed':
-      payload.text = '@channel Alert from Loggly: Job Failed';
+      payload.text = '<!channel> Alert from Loggly: Job Failed';
       break;
     case 'memoryquotaexceeded':
-      payload.text = '@channel Alert from Loggly: Memory Quota Exceeded';
+      payload.text = '<!channel> Alert from Loggly: Memory Quota Exceeded';
       break;
     case 'requesttimeouts':
-      payload.text = '@channel Alert from Loggly: Request Timeouts';
+      payload.text = '<!channel> Alert from Loggly: Request Timeouts';
       break;
     case 'slowrequests':
-      payload.text = '@channel Alert from Loggly: Slow Requests';
+      payload.text = '<!channel> Alert from Loggly: Slow Requests';
       break;
   }
 
