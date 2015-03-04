@@ -8,7 +8,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-  res.send(req);
+  console.log(req);
 });
 
 var server = app.listen(app.get('port'), function () {
