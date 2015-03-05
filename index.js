@@ -11,9 +11,9 @@ app.get('/', function(req, res) {
 app.post('/', function(req, res) {
   var payload = {
     channel: '#hackers',
-    username: 'Doom Guy',
+    username: 'DustinChompyBot',
     text: 'Alert from Loggly: something something something',
-    icon_emoji: ':godmode:'
+    icon_emoji: ':dustinchompy:'
   };
   
   var type = req.query.type;
