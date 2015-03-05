@@ -9,39 +9,53 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-  var payload = {
-    channel: '#hackers',
-    username: 'DustinChompyBot',
-    text: 'Alert from Loggly: something something something',
-    icon_emoji: ':dustinchompy:'
-  };
-  
+  var alertMessage = 'Some alert message';
   var type = req.query.type;
 
   switch(type) {
     case 'boxerror':
-      payload.text = '<!channel> Alert from Loggly: Box Error';
+      alertMessage = 'Box Error';
       break;
     case 'elevatedclientalerts':
-      payload.text = '<!channel> Alert from Loggly: Elevated Client Alerts';
+      alertMessage = 'Elevated Client Alerts';
       break;
     case 'elevatedserveralerts':
-      payload.text = '<!channel> Alert from Loggly: Elevated Server Alerts';
+      alertMessage = 'Elevated Server Alerts';
       break;
     case 'jobfailed':
-      payload.text = '<!channel> Alert from Loggly: Job Failed';
+      alertMessage = 'Job Failed';
       break;
     case 'memoryquotaexceeded':
-      payload.text = '<!channel> Alert from Loggly: Memory Quota Exceeded';
+      alertMessage = 'Memory Quota Exceeded';
       break;
     case 'requesttimeouts':
-      payload.text = '<!channel> Alert from Loggly: Request Timeouts';
+      alertMessage = 'Request Timeouts';
       break;
     case 'slowrequests':
-      payload.text = '<!channel> Alert from Loggly: Slow Requests';
+      alertMessage = 'Slow Requests';
       break;
   }
 
+  var payload = {
+    channel: '#hackers',
+    username: 'DustinChompyBot',
+    icon_emoji: ':dustinchompy:',
+    attachments: [{
+      fallback: 'Alert',
+      color: 'danger',
+      title: '<!channel>: Alert',
+      fields: [{
+        title: 'From',
+        value: 'Loggly',
+        short: 'true'
+      }, {
+        title: 'Type',
+        value: alertMessage,
+        short: 'true'
+      }]
+    }]
+  };
+  
   request({
     url: process.env.URL,
     method: 'POST',
