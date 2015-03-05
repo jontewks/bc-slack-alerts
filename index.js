@@ -38,14 +38,14 @@ app.post('/', function(req, res) {
 
   var payload = {
     channel: '#hackers',
-    username: 'DustinChompyBot',
-    icon_emoji: ':dustinchompy:',
+    username: 'DoomGuy',
+    icon_emoji: ':godmode:',
     attachments: [{
       fallback: 'Alert',
       color: 'danger',
-      title: '<!channel>: Alert',
+      text: '<!channel>',
       fields: [{
-        title: 'From',
+        title: 'Alert From',
         value: 'Loggly',
         short: 'true'
       }, {
