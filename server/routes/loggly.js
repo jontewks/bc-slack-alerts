@@ -5,9 +5,10 @@ var request = require('request');
 router.post('/', function(req, res) {
   if (req.query.secret !== process.env.SECRET) {
     res.sendStatus(404).end();
+    return;
   }
 
-  var alertMessage = 'Some alert message';
+  var alertMessage = req.query.alert || 'Some alert message';
   var type = req.query.type;
 
   switch(type) {
@@ -58,6 +59,8 @@ router.post('/', function(req, res) {
     url: process.env.URL,
     method: 'POST',
     body: JSON.stringify(payload)
+  }, function() {
+    res.end();
   });
 });
 
