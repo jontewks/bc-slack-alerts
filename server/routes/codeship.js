@@ -5,7 +5,7 @@ var request = require('request');
 router.post('/', function(req, res) {
   if (req.query.secret !== process.env.SECRET) {
     res.sendStatus(404).end();
-  } else if (req.body.build.status !== 'success') {
+  } else if (req.body.build.status !== 'testing' && req.body.build.status !== 'success') {
     var payload = {
       channel: '#hackers',
       username: 'DoomGuy',
@@ -24,7 +24,7 @@ router.post('/', function(req, res) {
           short: 'true'
         }, {
           title: 'Shame upon',
-          value: '<' + req.body.build.commit_url + '|' + req.body.build.commiter + '>',
+          value: '<' + req.body.build.commit_url + '|' + req.body.build.committer + '>',
           short: 'true'
         }]
       }]
