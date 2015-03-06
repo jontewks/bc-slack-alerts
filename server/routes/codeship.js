@@ -3,66 +3,43 @@ var router = express.Router();
 var request = require('request');
 
 router.post('/', function(req, res) {
-  console.log(req.body)
-  // if (req.query.secret !== process.env.SECRET) {
-  //   res.sendStatus(404).end();
-  //   return;
-  // }
-
-  // var alertMessage = req.query.alert || 'Some alert message';
-  // var type = req.query.type;
-
-  // switch(type) {
-  //   case 'boxerror':
-  //     alertMessage = 'Box Error';
-  //     break;
-  //   case 'elevatedclientalerts':
-  //     alertMessage = 'Elevated Client Alerts';
-  //     break;
-  //   case 'elevatedserveralerts':
-  //     alertMessage = 'Elevated Server Alerts';
-  //     break;
-  //   case 'jobfailed':
-  //     alertMessage = 'Job Failed';
-  //     break;
-  //   case 'memoryquotaexceeded':
-  //     alertMessage = 'Memory Quota Exceeded';
-  //     break;
-  //   case 'requesttimeouts':
-  //     alertMessage = 'Request Timeouts';
-  //     break;
-  //   case 'slowrequests':
-  //     alertMessage = 'Slow Requests';
-  //     break;
-  // }
-
-  // var payload = {
-  //   channel: '#hackers',
-  //   username: 'DoomGuy',
-  //   icon_emoji: ':godmode:',
-  //   attachments: [{
-  //     fallback: 'Alert',
-  //     color: 'danger',
-  //     text: '<!channel>',
-  //     fields: [{
-  //       title: 'Alert From',
-  //       value: 'Loggly',
-  //       short: 'true'
-  //     }, {
-  //       title: 'Type',
-  //       value: alertMessage,
-  //       short: 'true'
-  //     }]
-  //   }]
-  // };
-  
-  // request({
-  //   url: process.env.URL,
-  //   method: 'POST',
-  //   body: JSON.stringify(payload)
-  // }, function() {
-  //   res.end();
-  // });
+  if (req.query.secret !== process.env.SECRET) {
+    res.sendStatus(404).end();
+  } else if (req.body.build.status !== 'success') {
+    var payload = {
+      channel: '#hackers',
+      username: 'DoomGuy',
+      icon_emoji: ':godmode:',
+      attachments: [{
+        fallback: 'Alert',
+        color: 'danger',
+        text: '<!channel>',
+        fields: [{
+          title: 'Alert From',
+          value: 'CodeShip',
+          short: 'true'
+        }, {
+          title: 'Build Failed',
+          value: '<' + req.body.build.build_url + '|' + req.body.build.message + '>',
+          short: 'true'
+        }, {
+          title: 'Shame upon',
+          value: '<' + req.body.build.commit_url + '|' + req.body.build.commiter + '>',
+          short: 'true'
+        }]
+      }]
+    };
+    
+    request({
+      url: process.env.URL,
+      method: 'POST',
+      body: JSON.stringify(payload)
+    }, function() {
+      res.end();
+    });
+  } else {
+    res.end();
+  }
 });
 
 module.exports = router;
