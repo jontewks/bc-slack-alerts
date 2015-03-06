@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var request = require('request');
 var logglyRoutes = require('./routes/loggly');
 
 app.set('port', (process.env.PORT || 5000));
