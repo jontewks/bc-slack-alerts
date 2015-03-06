@@ -1,14 +1,7 @@
 var express = require('express');
-var app = express();
-var request = require('request');
+var router = express.Router();
 
-app.set('port', (process.env.PORT || 5000));
-
-app.get('/', function(req, res) {
-  res.send('You got it.');
-});
-
-app.post('/', function(req, res) {
+router.post('/', function(req, res) {
   var alertMessage = 'Some alert message';
   var type = req.query.type;
 
@@ -64,5 +57,3 @@ app.post('/', function(req, res) {
     res.sendStatus(201);
   });
 });
-
-var server = app.listen(app.get('port'));
