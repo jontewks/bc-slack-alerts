@@ -3,7 +3,7 @@ var router = express.Router();
 var request = require('request');
 
 router.post('/', function(req, res) {
-  console.log(req)
+  console.log(req.body)
   // if (req.query.secret !== process.env.SECRET) {
   //   res.sendStatus(404).end();
   //   return;
