@@ -58,8 +58,6 @@ router.post('/', function(req, res) {
     url: process.env.URL,
     method: 'POST',
     body: JSON.stringify(payload)
-  }, function() {
-    res.sendStatus(201);
   });
 });
 
