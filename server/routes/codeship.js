@@ -9,7 +9,7 @@ router.post('/', function(req, res) {
     console.log(req.body)
     var payload = {
       channel: '#hackers',
-      username: 'CodeShip',
+      username: 'Codeship',
       icon_emoji: ':codeship:',
       attachments: [{
         fallback: 'Alert',
@@ -33,10 +33,10 @@ router.post('/', function(req, res) {
       method: 'POST',
       body: JSON.stringify(payload)
     }, function() {
-      res.end();
+      res.sendStatus(201).end();
     });
   } else {
-    res.end();
+    res.sendStatus(201).end();
   }
 });
 
