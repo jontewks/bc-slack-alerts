@@ -6,7 +6,6 @@ router.post('/', function(req, res) {
   if (req.query.secret !== process.env.SECRET) {
     res.sendStatus(404).end();
   } else if (req.body.build.status !== 'testing' && req.body.build.status !== 'success') {
-    console.log(req.body)
     var payload = {
       channel: '#hackers',
       username: 'Codeship',

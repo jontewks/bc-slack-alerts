@@ -37,20 +37,15 @@ router.post('/', function(req, res) {
 
   var payload = {
     channel: '#hackers',
-    username: 'DoomGuy',
-    icon_emoji: ':godmode:',
+    username: 'Loggly',
+    icon_emoji: ':loggly:',
     attachments: [{
       fallback: 'Alert',
       color: 'danger',
       text: '<!channel>',
       fields: [{
-        title: 'Alert From',
-        value: 'Loggly',
-        short: 'true'
-      }, {
         title: 'Type',
-        value: alertMessage,
-        short: 'true'
+        value: alertMessage
       }]
     }]
   };
