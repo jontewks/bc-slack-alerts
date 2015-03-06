@@ -5,7 +5,7 @@ router.post('/', function(req, res) {
   if (req.query.secret !== process.env.SECRET) {
     res.sendStatus(404);
   }
-  
+
   var alertMessage = 'Some alert message';
   var type = req.query.type;
 
@@ -61,3 +61,5 @@ router.post('/', function(req, res) {
     res.sendStatus(201);
   });
 });
+
+module.exports = router;
