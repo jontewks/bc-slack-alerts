@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 router.post('/', function(req, res) {
+  if (req.query.secret !== process.env.SECRET) {
+    res.sendStatus(404);
+  }
+  
   var alertMessage = 'Some alert message';
   var type = req.query.type;
 
