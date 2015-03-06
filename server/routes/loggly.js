@@ -4,7 +4,7 @@ var request = require('request');
 
 router.post('/', function(req, res) {
   if (req.query.secret !== process.env.SECRET) {
-    res.sendStatus(404);
+    res.sendStatus(404).end();
   }
 
   var alertMessage = 'Some alert message';
