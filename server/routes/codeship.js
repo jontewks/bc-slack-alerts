@@ -6,21 +6,19 @@ router.post('/', function(req, res) {
   if (req.query.secret !== process.env.SECRET) {
     res.sendStatus(404).end();
   } else if (req.body.build.status !== 'testing' && req.body.build.status !== 'success') {
+    console.log(req.body)
     var payload = {
       channel: '#hackers',
-      username: 'DoomGuy',
-      icon_emoji: ':godmode:',
+      username: 'CodeShip',
+      icon_emoji: ':codeship:',
       attachments: [{
         fallback: 'Alert',
         color: 'danger',
-        text: '<!channel>',
+        title: 'Build Failed',
+        title_link: req.body.build.build_url,
         fields: [{
-          title: 'Alert From',
-          value: 'CodeShip',
-          short: 'true'
-        }, {
-          title: 'Build Failed',
-          value: '<' + req.body.build.build_url + '|' + req.body.build.message + '>',
+          title: 'Branch',
+          value: req.body.build.branch,
           short: 'true'
         }, {
           title: 'Shame upon',
