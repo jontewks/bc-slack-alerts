@@ -30,13 +30,16 @@ router.get('/', function(req, res) {
           title_link: 'https://status.heroku.com/',
           fields: [{
             title: 'Production',
-            value: result.status.Production === 'green' ? 'Operational' : 'Experiencing issues'
-          }, {
-            title: 'Development',
-            value: result.status.Development === 'green' ? 'Operational' : 'Experiencing issues'
+            value: result.status.Production === 'green' ? 'Operational' : 'Experiencing issues',
+            short: 'true'
           }, {
             title: 'Issues',
-            value: result.issues.length ? issues : 'No issues'
+            value: result.issues.length ? issues : 'No issues',
+            short: 'true'
+          }{
+            title: 'Development',
+            value: result.status.Development === 'green' ? 'Operational' : 'Experiencing issues',
+            short: 'true'
           }]
         }]
       };
