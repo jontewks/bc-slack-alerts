@@ -36,7 +36,7 @@ router.get('/', function(req, res) {
             title: 'Issues',
             value: result.issues.length ? issues : 'No issues',
             short: 'true'
-          }{
+          }, {
             title: 'Development',
             value: result.status.Development === 'green' ? 'Operational' : 'Experiencing issues',
             short: 'true'
