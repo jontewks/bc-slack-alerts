@@ -9,6 +9,7 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
 
   console.log(req.body);
+  res.sendStatus(201).end();
   // if (req.query.secret !== process.env.SECRET) {
   //   res.sendStatus(404).end();
   // } else if (req.body.build.status !== 'testing' && req.body.build.status !== 'success') {
