@@ -2,7 +2,12 @@ var express = require('express');
 var router = express.Router();
 var request = require('request');
 
+router.get('/', function(req, res) {
+  res.sendStatus(200).end();
+});
+
 router.post('/', function(req, res) {
+
   console.log(req.body);
   // if (req.query.secret !== process.env.SECRET) {
   //   res.sendStatus(404).end();
