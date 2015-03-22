@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
+var slackBot = require('slack-bot')(process.env.URL);
 
 router.get('/', function(req, res) {
   if (req.query.secret !== process.env.SECRET) {
@@ -19,7 +20,7 @@ router.get('/', function(req, res) {
         color = 'danger';
       }
 
-      var payload = {
+      slackBot.send({
         channel: '#hackers',
         username: 'Heroku',
         icon_emoji: ':heroku:',
@@ -42,12 +43,6 @@ router.get('/', function(req, res) {
             short: 'true'
           }]
         }]
-      };
-      
-      request({
-        url: process.env.URL,
-        method: 'POST',
-        body: JSON.stringify(payload)
       }, function() {
         res.end();
       });

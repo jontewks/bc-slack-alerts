@@ -5,7 +5,6 @@ var bodyParser = require('body-parser');
 var logglyRoutes = require('./routes/loggly');
 var codeshipRoutes = require('./routes/codeship');
 var herokuRoutes = require('./routes/heroku');
-var testRoutes = require('./routes/test');
 
 app.set('port', (process.env.PORT || 5000));
 
