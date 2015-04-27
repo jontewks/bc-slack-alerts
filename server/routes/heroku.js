@@ -20,32 +20,34 @@ router.get('/', function(req, res) {
         color = 'danger';
       }
 
-      slackBot.send({
-        channel: '#hackers',
-        username: 'Heroku',
-        icon_emoji: ':heroku:',
-        attachments: [{
-          fallback: 'Heroku Status',
-          color: color,
-          title: 'Heroku Status',
-          title_link: 'https://status.heroku.com/',
-          fields: [{
-            title: 'Production',
-            value: result.status.Production === 'green' ? 'Operational' : 'Experiencing issues',
-            short: 'true'
-          }, {
-            title: 'Issues',
-            value: result.issues.length ? issues : 'No issues',
-            short: 'true'
-          }, {
-            title: 'Development',
-            value: result.status.Development === 'green' ? 'Operational' : 'Experiencing issues',
-            short: 'true'
-          }]
-        }]
-      }, function() {
+      console.log(result);
+
+      // slackBot.send({
+      //   channel: '#hackers',
+      //   username: 'Heroku',
+      //   icon_emoji: ':heroku:',
+      //   attachments: [{
+      //     fallback: 'Heroku Status',
+      //     color: color,
+      //     title: 'Heroku Status',
+      //     title_link: 'https://status.heroku.com/',
+      //     fields: [{
+      //       title: 'Production',
+      //       value: result.status.Production === 'green' ? 'Operational' : 'Experiencing issues',
+      //       short: 'true'
+      //     }, {
+      //       title: 'Issues',
+      //       value: result.issues.length ? issues : 'No issues',
+      //       short: 'true'
+      //     }, {
+      //       title: 'Development',
+      //       value: result.status.Development === 'green' ? 'Operational' : 'Experiencing issues',
+      //       short: 'true'
+      //     }]
+      //   }]
+      // }, function() {
         res.end();
-      });
+      // });
     });
   }
 });
