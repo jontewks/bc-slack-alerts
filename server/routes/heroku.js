@@ -17,15 +17,16 @@ router.get('/', function(req, res) {
 
       if (result.status.Production === 'green' && result.status.Development === 'green') {
         color = 'good';
+      } else {
+        color = 'danger';
 
         result.issues.forEach(function(issue) {
           issues.push(issue.title);
         });
-      } else {
-        color = 'danger';
       }
 
       slackBot.send({
+        text: undefined,
         channel: '#hackers',
         username: 'Heroku',
         icon_emoji: ':heroku:',
