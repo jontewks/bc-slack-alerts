@@ -26,7 +26,6 @@ router.get('/', function(req, res) {
       }
 
       slackBot.send({
-        text: undefined,
         channel: '#hackers',
         username: 'Heroku',
         icon_emoji: ':heroku:',
