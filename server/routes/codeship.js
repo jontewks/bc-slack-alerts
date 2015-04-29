@@ -5,6 +5,8 @@ var slackBot = require('slack-bot')(process.env.URL);
 var nameMap = {
   alexmingoia: '@alex',
   bradfordh: '@bradfordh',
+  cannoneyed: '@andycoenen',
+  HankMcCoy: '@thomas',
   jessepedler: '@jessepedler',
   joebalancio: '@joe',
   jontewks: '@jon'
