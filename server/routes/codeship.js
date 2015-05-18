@@ -6,17 +6,13 @@ var nameMap = {
   alexmingoia: '@alex',
   bradfordh: '@bradfordh',
   cannoneyed: '@andycoenen',
-  HankMcCoy: '@thomas',
+  'Thomas Beirne': '@thomas',
   jessepedler: '@jessepedler',
   joebalancio: '@joe',
   jontewks: '@jon'
 };
 
 router.post('/', function(req, res) {
-  if (req && req.body && req.body.build) {
-    console.log(req.body.build);
-  }
-  
   if (req.query.secret !== process.env.SECRET) {
     res.sendStatus(404).end();
   } else if (req.body.build.status !== 'testing' && req.body.build.status !== 'success') {
