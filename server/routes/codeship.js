@@ -13,6 +13,10 @@ var nameMap = {
 };
 
 router.post('/', function(req, res) {
+  if (req && req.body && req.body.build) {
+    console.log(req.body.build);
+  }
+  
   if (req.query.secret !== process.env.SECRET) {
     res.sendStatus(404).end();
   } else if (req.body.build.status !== 'testing' && req.body.build.status !== 'success') {
@@ -40,7 +44,6 @@ router.post('/', function(req, res) {
         }]
       };
     } else {
-      console.log('COMMITTER!!!!!!!!!!!!!!!!!', req.body.build.committer)
       payload = {
         channel: nameMap[req.body.build.committer],
         username: 'Codeship',
