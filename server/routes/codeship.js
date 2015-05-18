@@ -13,6 +13,8 @@ var nameMap = {
 };
 
 router.post('/', function(req, res) {
+  console.log(req.body.build);
+
   if (req.query.secret !== process.env.SECRET) {
     res.sendStatus(404).end();
   } else if (req.body.build.status !== 'testing' && req.body.build.status !== 'success') {
