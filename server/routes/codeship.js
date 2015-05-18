@@ -40,6 +40,7 @@ router.post('/', function(req, res) {
         }]
       };
     } else {
+      console.log('COMMITTER!!!!!!!!!!!!!!!!!', req.body.build.committer)
       payload = {
         channel: nameMap[req.body.build.committer],
         username: 'Codeship',
