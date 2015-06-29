@@ -16,7 +16,7 @@ router.post('/', function(req, res) {
   console.log(req.body.build)
   if (req.query.secret !== process.env.SECRET) {
     res.sendStatus(404).end();
-  } else if (req.body.build.status !== 'testing' && req.body.build.status !== 'success') {
+  } else if (['waiting', 'testing', 'success'].indexOf(req.body.build.status) === -1) {
     var payload;
 
     if (req.body.build.branch === 'master' || req.body.build.branch === 'dev') {
