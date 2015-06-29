@@ -40,7 +40,7 @@ router.get('/', function(req, res) {
             short: 'true'
           }, {
             title: 'Issues',
-            value: issues ? issues.join(', ') : 'No issues',
+            value: issues && issues.length ? issues.join(', ') : 'No issues',
             short: 'true'
           }, {
             title: 'Development',
