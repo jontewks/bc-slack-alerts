@@ -4,6 +4,7 @@ var request = require('request');
 var slackBot = require('slack-bot')(process.env.URL);
 
 router.get('/', function(req, res) {
+  // Cheap security
   if (req.query.secret !== process.env.SECRET) {
     res.sendStatus(404).end();
   } else {

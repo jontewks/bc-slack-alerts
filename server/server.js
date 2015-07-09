@@ -13,8 +13,4 @@ app.use('/loggly', logglyRoutes);
 app.use('/codeship', codeshipRoutes);
 app.use('/heroku', herokuRoutes);
 
-app.get('/', function(req, res) {
-  res.send('You got it.');
-});
-
 var server = app.listen(app.get('port'));

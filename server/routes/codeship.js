@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var slackBot = require('slack-bot')(process.env.URL);
 
+// Name map to send DMs to people about build failures
 var nameMap = {
   alexmingoia: '@alex',
   bradfordh: '@bradfordh',
@@ -13,7 +14,7 @@ var nameMap = {
 };
 
 router.post('/', function(req, res) {
-  console.log(req.body.build)
+  // Cheap security
   if (req.query.secret !== process.env.SECRET) {
     res.sendStatus(404).end();
   } else if (['waiting', 'testing', 'success'].indexOf(req.body.build.status) === -1) {
