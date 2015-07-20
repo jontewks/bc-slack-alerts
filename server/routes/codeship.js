@@ -7,6 +7,7 @@ var nameMap = {
   alexmingoia: '@alex',
   bradfordh: '@bradfordh',
   cannoneyed: '@andycoenen',
+  dsernst: '@david',
   HankMcCoy: '@thomas',
   jessepedler: '@jessepedler',
   joebalancio: '@joe',
