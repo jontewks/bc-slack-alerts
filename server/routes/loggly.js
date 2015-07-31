@@ -37,7 +37,7 @@ router.post('/', function(req, res) {
   }
 
   slackBot.send({
-    channel: '#hackers',
+    channel: '#alerts',
     username: 'Loggly',
     icon_emoji: ':loggly:',
     attachments: [{
