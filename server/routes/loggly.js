@@ -43,7 +43,7 @@ router.post('/', function(req, res) {
     attachments: [{
       fallback: 'Alert',
       color: 'danger',
-      text: '<!channel>',
+      text: 'Alert',
       fields: [{
         title: 'Type',
         value: alertMessage
