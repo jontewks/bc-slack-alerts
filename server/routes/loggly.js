@@ -9,7 +9,7 @@ router.post('/', function(req, res) {
     return;
   }
 
-  var alertMessage = req.query.alert || 'Some alert message';
+  var alertMessage = req.query.alert || req.query.type || 'Some alert message';
   var type = req.query.type;
 
   switch(type) {
@@ -33,6 +33,9 @@ router.post('/', function(req, res) {
       break;
     case 'slowrequests':
       alertMessage = 'Slow Requests';
+      break;
+    case 'increased403s':
+      alertMessage = 'Increased 403s';
       break;
   }
 
