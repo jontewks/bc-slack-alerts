@@ -8,6 +8,7 @@ router.get('/', function(req, res) {
   if (req.query.secret !== process.env.SECRET) {
     res.sendStatus(404).end();
   } else {
+    res.send(204).end()
     request({
       url: 'https://status.heroku.com/api/v3/current-status',
       method: 'GET'
@@ -27,7 +28,7 @@ router.get('/', function(req, res) {
       }
 
       slackBot.send({
-        channel: '#hackers',
+        channel: '#alerts_providers',
         username: 'Heroku',
         icon_emoji: ':heroku:',
         attachments: [{
@@ -49,8 +50,6 @@ router.get('/', function(req, res) {
             short: 'true'
           }]
         }]
-      }, function() {
-        res.end();
       });
     });
   }
